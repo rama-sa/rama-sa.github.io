@@ -72,13 +72,16 @@ nav.links a:hover{color:var(--ink)}
 .row span:first-child{min-width:0}
 .row .num{font-size:.98rem}
 .row.sale .num{color:var(--ink);font-weight:500}
-.row.cut .num{color:var(--loss)}
-.row.hidden-cost span:first-child::after{content:"لا تظهر في لوحة المتجر";margin-inline-start:8px;font-size:.72rem;color:var(--loss);background:var(--loss-soft);padding:1px 8px;border-radius:999px;white-space:nowrap}
+.row.cut .num{color:var(--muted)}
+.row.hidden-cost span:first-child::after{content:"يكشفها راما";margin-inline-start:8px;font-size:.72rem;color:var(--warn);background:color-mix(in srgb,var(--warn) 14%,transparent);padding:1px 8px;border-radius:999px;white-space:nowrap}
 .row.total{border-bottom:0;border-top:2px solid var(--ink);margin-top:6px;padding-top:12px}
 .row.total span:first-child{font-weight:600}
 .row.total .num{color:var(--accent);font-size:1.35rem;font-weight:500}
-.bar{height:10px;border-radius:999px;background:var(--loss-soft);overflow:hidden;margin-top:14px;display:flex;flex-direction:row}
+.bar{height:10px;border-radius:999px;background:var(--line);overflow:hidden;margin-top:14px;display:flex;flex-direction:row}
 .bar i{display:block;height:100%;background:var(--accent)}
+.gain{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:14px;padding:10px 12px;border-radius:10px;background:var(--accent-soft);color:var(--accent);font-weight:600;flex-wrap:wrap}
+.gain .num{font-size:1.05rem}
+td.muted{color:var(--muted)}
 .ledger .foot{display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:.82rem;color:var(--muted);flex-wrap:wrap}
 
 /* sections */
@@ -212,7 +215,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
       <div class="row cut"><span>ضريبة القيمة المضافة ١٥٪</span><span class="num">−6,339</span></div>
       <div class="row total"><span>صافي الربح</span><span class="num">6,221 ر.س</span></div>
       <div class="bar" role="img" aria-label="صافي الربح 12.8 بالمئة من المبيعات"><i style="width:12.8%"></i></div>
-      <div class="foot"><span>الربح الحقيقي = <span class="num">12.8%</span> من المبيعات</span><span>المبالغ بالريال السعودي</span></div>
+      <div class="gain"><span>بعد تطبيق توصيات راما</span><span class="num">+1,420 ر.س شهرياً</span></div>
+      <div class="foot"><span>الربح يرتفع من <span class="num">12.8%</span> إلى <span class="num">15.7%</span> من المبيعات</span><span>المبالغ بالريال السعودي</span></div>
     </div>
   </div>
 
@@ -220,26 +224,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow">الميزة التي لا يقدمها غيرنا</span>
-        <h2>أين يخسّرك الدفع عند الاستلام؟</h2>
-        <p>كل طلب يُرفض استلامه تدفع شحنه ذهاباً وإياباً ولا تبيع شيئاً. راما يحسب نسبة الرفض والخسارة في كل مدينة وكل منتج، ويقول لك أين توقف الدفع عند الاستلام من «إعدادات قيود الدفع» في سلة.</p>
+        <h2>استرجع أرباحك من الدفع عند الاستلام</h2>
+        <p>راما يعرف أين يرفع الدفع عند الاستلام مبيعاتك وأين يكلّفك أكثر مما يكسبك، مدينةً مدينة ومنتجاً منتجاً. تحتفظ به حيث يربح، وتضبطه حيث يكلّف من «إعدادات قيود الدفع» في سلة.</p>
       </div>
       <div class="cod">
         <div class="table-box">
           <table>
-            <thead><tr><th>المدينة</th><th>طلبات الدفع عند الاستلام</th><th>نسبة الرفض</th><th>الخسارة</th></tr></thead>
+            <thead><tr><th>المدينة</th><th>طلبات الدفع عند الاستلام</th><th>نسبة الرفض</th><th>تكلفة الرفض</th></tr></thead>
             <tbody>
-              <tr><td>الرياض</td><td class="num">412</td><td><div class="rate ok"><div class="track"><i style="width:28%"></i></div><span class="num">7%</span></div></td><td class="num">−810</td></tr>
-              <tr><td>جدة</td><td class="num">296</td><td><div class="rate ok"><div class="track"><i style="width:36%"></i></div><span class="num">9%</span></div></td><td class="num">−720</td></tr>
-              <tr><td>مكة المكرمة</td><td class="num">143</td><td><div class="rate mid"><div class="track"><i style="width:48%"></i></div><span class="num">12%</span></div></td><td class="num">−470</td></tr>
-              <tr><td>الدمام</td><td class="num">88</td><td><div class="rate bad"><div class="track"><i style="width:72%"></i></div><span class="num">18%</span></div></td><td class="num">−540</td></tr>
-              <tr><td>أبها</td><td class="num">51</td><td><div class="rate bad"><div class="track"><i style="width:96%"></i></div><span class="num">24%</span></div></td><td class="num">−610</td></tr>
+              <tr><td>الرياض</td><td class="num">412</td><td><div class="rate ok"><div class="track"><i style="width:28%"></i></div><span class="num">7%</span></div></td><td class="num muted">810</td></tr>
+              <tr><td>جدة</td><td class="num">296</td><td><div class="rate ok"><div class="track"><i style="width:36%"></i></div><span class="num">9%</span></div></td><td class="num muted">720</td></tr>
+              <tr><td>مكة المكرمة</td><td class="num">143</td><td><div class="rate mid"><div class="track"><i style="width:48%"></i></div><span class="num">12%</span></div></td><td class="num muted">470</td></tr>
+              <tr><td>الدمام</td><td class="num">88</td><td><div class="rate bad"><div class="track"><i style="width:72%"></i></div><span class="num">18%</span></div></td><td class="num muted">540</td></tr>
+              <tr><td>أبها</td><td class="num">51</td><td><div class="rate bad"><div class="track"><i style="width:96%"></i></div><span class="num">24%</span></div></td><td class="num muted">610</td></tr>
             </tbody>
           </table>
         </div>
         <div class="advice">
-          <div class="note"><b>أبها: أوقف الدفع عند الاستلام</b><span>واحد من كل أربعة طلبات يُرفض. الخسارة هذا الشهر <span class="num">610</span> ر.س من <span class="num">51</span> طلباً فقط.</span></div>
-          <div class="note"><b>الدمام: اطلب عربوناً أو تأكيداً قبل الشحن</b><span>نسبة الرفض <span class="num">18%</span>، والمتوسط في متجرك <span class="num">10%</span>.</span></div>
-          <div class="note good"><b>الرياض وجدة: استمر</b><span>نسبة الرفض أقل من <span class="num">10%</span>، والدفع عند الاستلام يرفع مبيعاتك هناك.</span></div>
+          <div class="note good"><b>أبها: وفّر <span class="num">610</span> ر.س شهرياً</b><span>اجعل الدفع فيها إلكترونياً فقط، فواحد من كل أربعة طلبات يُرفض هناك.</span></div>
+          <div class="note good"><b>الدمام: وفّر حتى <span class="num">400</span> ر.س شهرياً</b><span>أكّد الطلب مع العميل قبل الشحن، فنسبة الرفض <span class="num">18%</span> والمتوسط في متجرك <span class="num">10%</span>.</span></div>
+          <div class="note good"><b>الرياض وجدة: استمر كما أنت</b><span>نسبة الرفض أقل من <span class="num">10%</span>، والدفع عند الاستلام يرفع مبيعاتك هناك.</span></div>
           <p class="sample">الجدول والتوصيات مثال توضيحي. داخل التطبيق تظهر أرقام متجرك.</p>
         </div>
       </div>
