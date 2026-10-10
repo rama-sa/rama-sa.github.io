@@ -58,8 +58,8 @@ nav.links a:hover{color:var(--ink)}
 .hero .lead p{font-size:1.12rem;color:var(--muted);max-width:34ch}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:12px 22px;border-radius:10px;border:0;font:inherit;font-weight:600;cursor:pointer}
-:root[data-theme="dark"] .btn{color:#0F1513}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn{color:#0F1513}}
+:root[data-theme="dark"] .btn:not(.ghost){color:#0F1513}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn:not(.ghost){color:#0F1513}}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .small{font-size:.85rem;color:var(--muted)}
 @media (max-width:860px){.hero{grid-template-columns:1fr;gap:32px;padding-block:36px 48px}}
@@ -148,10 +148,15 @@ details[open] summary::after{content:"–"}
 details p{color:var(--muted);margin-top:10px}
 
 /* legal */
-.legal{max-width:70ch;display:flex;flex-direction:column;gap:14px}
-.legal h3{margin-top:12px}
-.legal p,.legal li{color:var(--muted)}
-.legal ul{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+.legal-sec{padding-block:28px}
+.legal-grid{display:flex;flex-direction:column;gap:0;max-width:760px}
+details.legal{border-bottom:1px solid var(--line);padding-block:10px}
+details.legal summary{font-size:.95rem;font-weight:500;color:var(--muted)}
+.legal-body{display:flex;flex-direction:column;gap:6px;margin-top:8px;font-size:.85rem;line-height:1.7}
+.legal-body h3{font-size:.9rem;font-weight:600;margin-top:6px;font-family:var(--body)}
+.legal-body p,.legal-body li{color:var(--muted);margin:0}
+.legal-body ul{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:4px}
+.legal-grid > .small{margin-top:10px;font-size:.78rem}
 
 /* footer */
 footer{border-top:1px solid var(--line);padding-block:36px}
@@ -319,10 +324,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
     </div>
   </section>
 
-  <section id="privacy">
-    <div class="wrap legal">
-      <h2>سياسة الخصوصية</h2>
-      <p class="small">آخر تحديث: أكتوبر 2026</p>
+  <section class="legal-sec">
+    <div class="wrap legal-grid">
+      <details id="privacy" class="legal"><summary>سياسة الخصوصية</summary><div class="legal-body">
       <h3>البيانات التي نصل إليها</h3>
       <ul>
         <li>بيانات الطلبات: المبالغ، وطريقة الدفع، والحالة، ومدينة الشحن، وتكلفة الشحن.</li>
@@ -335,12 +339,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
       <p>نستخدم البيانات لحساب صافي الربح وتحليل الرفض والمرتجعات وإظهار التقارير والتوصيات لك وحدك. لا نبيع بياناتك ولا نشاركها مع أي طرف ثالث.</p>
       <h3>الحماية والحذف</h3>
       <p>تُنقل البيانات بشكل مشفر، ولا يصل إليها إلا حساب متجرك. عند حذف التطبيق تتوقف صلاحية الوصول فوراً، وتُحذف بياناتك نهائياً خلال 30 يوماً، ويمكنك طلب الحذف الفوري عبر بريد الدعم.</p>
-    </div>
-  </section>
-
-  <section id="terms">
-    <div class="wrap legal">
-      <h2>شروط الاستخدام</h2>
+    </div></details>
+      <details id="terms" class="legal"><summary>شروط الاستخدام</summary><div class="legal-body">
       <ul>
         <li>راما أداة تحليل ومعلومات، وأرقامه مبنية على بيانات متجرك والتكاليف التي تدخلها. دقة النتائج تعتمد على دقة هذه المدخلات.</li>
         <li>التوصيات إرشادية، وقرارات متجرك تبقى مسؤوليتك.</li>
@@ -348,6 +348,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
         <li>يحق لنا تحديث الميزات والأسعار مع إشعار المشتركين مسبقاً.</li>
         <li>للاستفسارات والدعم: بريد الدعم أدناه.</li>
       </ul>
+    </div></details>
+      <p class="small">آخر تحديث: أكتوبر 2026</p>
     </div>
   </section>
 </main>
