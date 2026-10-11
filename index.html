@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="راما يحسب صافي ربح متجرك في سلة ويكشف خسائر الدفع عند الاستلام في كل مدينة ومنتج.">
+<meta name="description" content="راما لمتاجر سلة: صافي ربحك الحقيقي، وأين تخسر، وماذا تفعل، مع حسابات جاهزة لمحاسبك.">
 <link rel="icon" type="image/png" href="icon.png">
-<title>راما</title>
+<title>راما — اعرف أرقامك.. لقرارات أفضل</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
@@ -139,6 +139,13 @@ tr:last-child td{border-bottom:0}
 .plan li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:.96rem}
 .plan li::before{content:"";width:8px;height:8px;margin-top:10px;border-radius:2px;background:var(--accent)}
 .soon{font-size:.72rem;color:var(--warn);margin-inline-start:6px}
+.billing{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px;margin:0 0 22px;gap:4px}
+.billing button{border:0;background:transparent;color:var(--muted);font:inherit;padding:8px 16px;border-radius:9px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.billing button[aria-pressed="true"]{background:var(--accent);color:#fff;font-weight:600}
+.billing .save{font-size:.78rem;background:var(--accent-soft);color:var(--accent);padding:2px 8px;border-radius:999px;font-weight:600}
+.billing button[aria-pressed="true"] .save{background:rgba(255,255,255,.2);color:#fff}
+.plan .per{font-size:.88rem;color:var(--muted);margin-top:-8px}
+.plan .per b{color:var(--accent)}
 .pricing-notes{margin-top:20px;display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:.92rem}
 
 /* faq */
@@ -167,6 +174,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 .mail{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .mail code{font-family:var(--mono);background:var(--surface);border:1px solid var(--line);padding:6px 10px;border-radius:8px;direction:ltr;user-select:all}
 .copy{background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 12px;font:inherit;font-size:.85rem;cursor:pointer}
+
+@keyframes rama-rise{from{transform:scaleY(0);opacity:0}to{transform:scaleY(1);opacity:1}}
+.brand svg g rect{transform-box:fill-box;transform-origin:50% 100%;animation:rama-rise .7s cubic-bezier(.2,.7,.2,1) both}
+.brand svg g rect:nth-child(2){animation-delay:.12s}.brand svg g rect:nth-child(3){animation-delay:.24s}.brand svg g rect:nth-child(4){animation-delay:.36s}.brand svg g rect:nth-child(5){animation-delay:.48s}
+@media (prefers-reduced-motion: reduce){.brand svg g rect{animation:none}}
 </style>
 </head>
 <body>
@@ -191,10 +203,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   <div class="wrap hero">
     <div class="lead">
       <span class="tag">تطبيق لمتاجر سلة</span>
-      <h1>مبيعاتك ليست ربحك. راما يريك الرقم الحقيقي.</h1>
-      <p>يحسب صافي ربح متجرك بعد كل تكلفة: المنتجات والشحن والإعلانات ورسوم الدفع والضريبة والمرتجعات. ويريك ربح كل منتج، ويكشف الخسائر المخفية التي لا تظهر في لوحة متجرك.</p>
+      <h1>اعرف أرقامك.. لقرارات أفضل</h1>
+      <p>راما يحسب صافي ربح متجرك بعد كل تكلفة، ثم يقول لك ماذا تفعل: أي منتج يخسرك، وأي مدينة يرتفع فيها رفض الاستلام، وأي إعلان توقفه. ويجهّز حساباتك لمحاسبك تلقائياً.</p>
       <div class="cta-row">
-        <a class="btn" href="#pricing">جرّب 14 يوماً مجاناً</a>
+        <a class="btn" href="#pricing">جرّب 7 أيام مجاناً</a>
         <a class="btn ghost" href="#cod">كيف يكشف الخسائر؟</a>
       </div>
       <p class="small">التثبيت من متجر تطبيقات سلة بضغطة، ويقرأ طلبات آخر 90 يوماً تلقائياً.</p>
@@ -260,16 +272,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
         <table class="feat-table">
           <thead><tr><th>الميزة</th><th>ماذا تعرف منها</th><th>الأساسية</th><th>الاحترافية</th></tr></thead>
           <tbody>
-            <tr><td><b>صافي الربح</b></td><td>ربحك لليوم والأسبوع والشهر بعد المنتجات والشحن ورسوم الدفع والضريبة والمرتجعات والرفض</td><td class="yes" aria-label="متوفر">✓</td><td class="yes" aria-label="متوفر">✓</td></tr>
-            <tr><td><b>ربح كل منتج</b></td><td>ترتيب المنتجات حسب ربحها الحقيقي، والخاسر منها يظهر أولاً</td><td class="yes" aria-label="متوفر">✓</td><td class="yes" aria-label="متوفر">✓</td></tr>
-            <tr><td><b>الرفض والمرتجعات</b></td><td>نسبة رفض الاستلام في كل مدينة وكل منتج، وقيمة ما خسرته من شحن ذهاب وعودة</td><td class="yes" aria-label="متوفر">✓</td><td class="yes" aria-label="متوفر">✓</td></tr>
-            <tr><td><b>مصروف الإعلانات</b></td><td>تُدخل مصروف سناب وتيك توك في ثوانٍ ويُخصم من ربحك</td><td class="yes" aria-label="متوفر">✓</td><td class="yes" aria-label="متوفر">✓</td></tr>
-            <tr><td><b>ملخص أسبوعي</b></td><td>ربحك وأفضل منتج وأسوأه وأهم توصية، كل أسبوع</td><td class="yes" aria-label="متوفر">✓</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>صافي الربح</b></td><td>ربحك لليوم والأسبوع والشهر بعد المنتجات والشحن ورسوم الدفع والضريبة والمرتجعات والرفض، مع المقارنة بالفترة السابقة</td><td class="yes" aria-label="متوفر">✓</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>ربح كل منتج وكل طلب</b></td><td>ترتيب المنتجات حسب ربحها الحقيقي، والخاسر منها يظهر أولاً</td><td class="yes" aria-label="متوفر">✓</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>الرفض والمرتجعات وأسبابها</b></td><td>نسبة رفض الاستلام في كل مدينة وكل منتج، ولماذا رجعت الطلبات</td><td class="yes" aria-label="متوفر">✓</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>أموال لم تصلك بعد</b></td><td>كم من أرباحك ما زال عند شركات الشحن أو بانتظار تحويل سلة</td><td class="yes" aria-label="متوفر">✓</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>المخزون الراكد</b></td><td>كم من مالك مجمّد في منتجات لم تُبع منذ أسابيع، مع اقتراح لتصريفها</td><td class="no" aria-label="غير متوفر">—</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>مصروف الإعلانات</b></td><td>سناب وتيك توك وميتا وقوقل والمشاهير، يُخصم من ربحك</td><td class="yes" aria-label="متوفر">✓</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>ملخص أسبوعي</b></td><td>ربحك وأفضل منتج وأسوأه وأهم توصية، كل أسبوع على بريدك</td><td class="yes" aria-label="متوفر">✓</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>المحاسبة</b></td><td>قائمة الدخل وملخص الضريبة ودفتر يومي يتحدث مع كل طلب، بصيغة Excel أو PDF</td><td class="no" aria-label="غير متوفر">—</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>أرسل لمحاسبك</b></td><td>إرسال تلقائي أول كل شهر، أو رابط دائم يفتحه محاسبك متى شاء</td><td class="no" aria-label="غير متوفر">—</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>ملخص يومي على الواتساب</b></td><td>ربح أمس وأكبر خسارة في رسالة كل صباح</td><td class="no" aria-label="غير متوفر">—</td><td class="yes" aria-label="متوفر">✓</td></tr>
             <tr><td><b>توصيات إيقاف الخسائر</b></td><td>أين توقف الدفع عند الاستلام، وأي منتج توقف إعلانه</td><td class="no" aria-label="غير متوفر">—</td><td class="yes" aria-label="متوفر">✓</td></tr>
-            <tr><td><b>نقطة التعادل</b></td><td>أقصى مبلغ تصرفه على الإعلان لكل طلب في كل منتج قبل أن تبدأ الخسارة</td><td class="no" aria-label="غير متوفر">—</td><td class="yes" aria-label="متوفر">✓</td></tr>
-            <tr><td><b>ربح كل حملة</b></td><td>هل الحملة الإعلانية مربحة بعد المرتجعات والرفض، وليس بعد المبيعات فقط</td><td class="no" aria-label="غير متوفر">—</td><td class="yes" aria-label="متوفر">✓</td></tr>
-            <tr><td><b>ربط الإعلانات تلقائياً</b> <span class="soon">قريباً</span></td><td>سحب مصروف سناب وتيك توك يومياً من حساباتك الإعلانية</td><td class="no" aria-label="غير متوفر">—</td><td class="yes" aria-label="متوفر">✓</td></tr>
-            <tr><td><b>تصدير التقارير</b></td><td>ملف جاهز لمحاسبك</td><td class="no" aria-label="غير متوفر">—</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>نقطة التعادل وربح كل حملة</b></td><td>أقصى ما تصرفه على الإعلان لكل طلب، وهل الحملة مربحة بعد المرتجعات</td><td class="no" aria-label="غير متوفر">—</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>جرّب قبل ما تغيّر</b></td><td>غيّر سعر منتج أو مصروف إعلانه، وشف أثره على ربحك الشهري قبل التطبيق</td><td class="no" aria-label="غير متوفر">—</td><td class="yes" aria-label="متوفر">✓</td></tr>
+            <tr><td><b>ربط الإعلانات تلقائياً</b> <span class="soon">قريباً</span></td><td>سحب مصروف سناب وتيك توك وميتا وقوقل يومياً من حساباتك</td><td class="no" aria-label="غير متوفر">—</td><td class="yes" aria-label="متوفر">✓</td></tr>
           </tbody>
         </table>
       </div>
@@ -280,36 +296,47 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow">الأسعار</span>
-        <h2>ابدأ مجاناً لمدة 14 يوماً</h2>
+        <h2>ابدأ مجاناً لمدة 7 أيام</h2>
         <p>الاشتراك والدفع من خلال متجر تطبيقات سلة، وتلغي متى شئت.</p>
+      </div>
+      <div class="billing" role="group" aria-label="مدة الاشتراك">
+        <button type="button" data-cycle="monthly" aria-pressed="true">شهري</button>
+        <button type="button" data-cycle="yearly" aria-pressed="false">سنوي <span class="save">شهران مجاناً</span></button>
       </div>
       <div class="plans">
         <div class="plan">
           <h3>الأساسية</h3>
-          <div class="price"><span class="num">79</span><span>ر.س / شهرياً</span></div>
+          <div class="price"><span class="num" data-m="79" data-y="790">79</span><span data-m="ر.س / شهرياً" data-y="ر.س / سنوياً">ر.س / شهرياً</span></div>
+          <div class="per" data-show="yearly" hidden>يعادل <b>66 ر.س</b> شهرياً، توفّر 158 ر.س</div>
           <ul>
             <li><span>صافي الربح اليومي والأسبوعي والشهري</span></li>
             <li><span>ربح كل منتج</span></li>
             <li><span>تحليل الدفع عند الاستلام حسب المدينة والمنتج</span></li>
-            <li><span>إدخال مصروف الإعلانات يدوياً</span></li>
+            <li><span>المرتجعات والرفض وأسبابها</span></li>
+            <li><span>الأموال التي لم تصلك بعد</span></li>
+            <li><span>إدخال التكاليف والإعلانات يدوياً أو من Excel</span></li>
             <li><span>ملخص أسبوعي</span></li>
           </ul>
         </div>
         <div class="plan featured">
           <h3>الاحترافية <span class="tag">الأكثر قيمة</span></h3>
-          <div class="price"><span class="num">149</span><span>ر.س / شهرياً</span></div>
+          <div class="price"><span class="num" data-m="149" data-y="1,490">149</span><span data-m="ر.س / شهرياً" data-y="ر.س / سنوياً">ر.س / شهرياً</span></div>
+          <div class="per" data-show="yearly" hidden>يعادل <b>124 ر.س</b> شهرياً، توفّر 298 ر.س</div>
           <ul>
             <li><span>كل ما في الأساسية</span></li>
+            <li><span>تبويب المحاسبة وإرسال تلقائي لمحاسبك</span></li>
+            <li><span>ملخص يومي على الواتساب</span></li>
+            <li><span>«جرّب قبل ما تغيّر» للسعر والإعلان</span></li>
+            <li><span>كشف المخزون الراكد والمال المجمّد فيه</span></li>
             <li><span>توصيات مباشرة لإيقاف الخسائر</span></li>
             <li><span>نقطة التعادل الإعلانية لكل منتج</span></li>
             <li><span>ربح كل حملة إعلانية بعد المرتجعات والرفض</span></li>
             <li><span>ربط تلقائي بسناب وتيك توك<span class="soon">قريباً</span></span></li>
-            <li><span>تصدير التقارير لمحاسبك</span></li>
           </ul>
         </div>
       </div>
       <div class="pricing-notes">
-        <span>الاشتراك السنوي: ادفع 10 أشهر واحصل على 12.</span>
+        <span>الاشتراك السنوي: ادفع 10 أشهر واحصل على 12. الأسعار لا تشمل ضريبة القيمة المضافة.</span>
         <span>التجربة المجانية تشمل كل ميزات الباقة الاحترافية.</span>
       </div>
     </div>
@@ -331,23 +358,48 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   <section class="legal-sec">
     <div class="wrap legal-grid">
       <details id="privacy" class="legal"><summary>سياسة الخصوصية</summary><div class="legal-body">
+      <p>توضح هذه السياسة كيف يتعامل «راما» مع بيانات متجرك عند تثبيته من متجر تطبيقات سلة.</p>
       <h3>البيانات التي نصل إليها</h3>
       <ul>
-        <li>بيانات الطلبات: المبالغ، وطريقة الدفع، والحالة، ومدينة الشحن، وتكلفة الشحن.</li>
-        <li>بيانات المنتجات: الاسم، والسعر، والتكلفة.</li>
-        <li>التكاليف التي تدخلها بنفسك، مثل مصروف الإعلانات.</li>
+        <li>بيانات المتجر: اسم المتجر ورقمه في سلة، والبريد الإلكتروني لصاحب الحساب.</li>
+        <li>بيانات الطلبات: المبالغ، والخصومات، وطريقة الدفع، والحالة، ومدينة الشحن، وشركة الشحن ورقم التتبع وتكلفة الشحن.</li>
+        <li>بيانات المنتجات: الاسم، والسعر، والكمية في المخزون.</li>
+        <li>ما تدخله بنفسك: تكلفة المنتجات، وأسعار الشحن، ومصروف الإعلانات، والمصاريف الثابتة، وبريد محاسبك، ورقم الجوال إذا فعّلت ملخص الواتساب.</li>
+        <li>إذا ربطت حساباً إعلانياً: مصروف الحملات وأسماؤها فقط، دون أي صلاحية لتعديلها.</li>
       </ul>
       <h3>ما لا نخزنه</h3>
-      <p>لا نخزن أسماء العملاء ولا أرقام جوالاتهم ولا بريدهم ولا عناوينهم التفصيلية ولا أي بيانات دفع أو بطاقات.</p>
+      <p>لا نخزن أسماء عملائك ولا أرقام جوالاتهم ولا بريدهم ولا عناوينهم التفصيلية، ولا أي بيانات دفع أو بطاقات. نحتفظ بمدينة الشحن فقط لتحليل الرفض والشحن.</p>
       <h3>كيف نستخدم البيانات</h3>
-      <p>نستخدم البيانات لحساب صافي الربح وتحليل الرفض والمرتجعات وإظهار التقارير والتوصيات لك وحدك. لا نبيع بياناتك ولا نشاركها مع أي طرف ثالث.</p>
-      <h3>الحماية والحذف</h3>
-      <p>تُنقل البيانات بشكل مشفر، ولا يصل إليها إلا حساب متجرك. عند حذف التطبيق تتوقف صلاحية الوصول فوراً، وتُحذف بياناتك نهائياً خلال 30 يوماً، ويمكنك طلب الحذف الفوري عبر بريد الدعم.</p>
+      <p>نستخدم البيانات لحساب صافي الربح، وتحليل المرتجعات والرفض، وإعداد التقارير والتوصيات وإرسالها لك أو لمحاسبك بطلب منك. لا نبيع بياناتك، ولا نشاركها مع أي جهة لأغراض تسويقية أو إعلانية. وراما يقرأ بيانات متجرك فقط، ولا يعدّل أي شيء فيه.</p>
+      <h3>مزودو الخدمة الذين تصلهم البيانات</h3>
+      <p>نستخدم مزودي خدمة لتشغيل التطبيق فقط، ولا يستخدمون بياناتك لأي غرض آخر:</p>
+      <ul>
+        <li><b>Supabase:</b> قاعدة البيانات التي تُحفظ فيها بيانات متجرك.</li>
+        <li><b>Railway:</b> الخوادم التي تشغّل التطبيق وتجري الحسابات.</li>
+        <li><b>خدمة إرسال البريد الإلكتروني:</b> لإرسال الملخص الأسبوعي وتقارير المحاسب إلى البريد الذي تحدده.</li>
+        <li><b>منصة واتساب للأعمال من Meta:</b> لإرسال الملخص اليومي، فقط إذا فعّلته وأدخلت رقمك.</li>
+        <li><b>سلة:</b> مصدر بيانات المتجر، ومن خلالها تتم الفوترة والاشتراك.</li>
+      </ul>
+      <p>قد تُحفظ البيانات لدى هؤلاء المزودين على خوادم خارج المملكة العربية السعودية، مع تشفيرها أثناء النقل والتخزين.</p>
+      <h3>الحماية</h3>
+      <p>تُنقل البيانات بشكل مشفر، ولا يصل إلى بيانات متجرك إلا حساب متجرك. نحتفظ بمفاتيح الوصول إلى سلة مشفرة، ونطلب أقل صلاحيات تحتاجها خدمة راما.</p>
+      <h3>مدة الاحتفاظ والحذف</h3>
+      <p>نحتفظ بالبيانات طوال مدة تثبيت التطبيق. عند حذف التطبيق تتوقف صلاحية الوصول فوراً، وتُحذف بياناتك نهائياً خلال 30 يوماً. ويمكنك طلب الحذف الفوري في أي وقت.</p>
+      <h3>حقوقك</h3>
+      <ul>
+        <li>طلب نسخة من بياناتك المحفوظة لدينا.</li>
+        <li>تصحيح ما تدخله من تكاليف وإعدادات في أي وقت من داخل التطبيق.</li>
+        <li>طلب حذف بياناتك، وإيقاف أي إرسال للبريد أو الواتساب.</li>
+      </ul>
+      <h3>التواصل</h3>
+      <p>لأي طلب يتعلق ببياناتك: rama.app@outlook.com. نرد على طلبات البيانات خلال 7 أيام عمل كحد أقصى.</p>
+      <p class="small">قد نحدّث هذه السياسة عند إضافة خدمة جديدة، ونبلغ المشتركين بأي تغيير جوهري.</p>
     </div></details>
       <details id="terms" class="legal"><summary>شروط الاستخدام</summary><div class="legal-body">
       <ul>
         <li>راما أداة تحليل ومعلومات، وأرقامه مبنية على بيانات متجرك والتكاليف التي تدخلها. دقة النتائج تعتمد على دقة هذه المدخلات.</li>
         <li>التوصيات إرشادية، وقرارات متجرك تبقى مسؤوليتك.</li>
+        <li>أرقام راما وتقاريره المحاسبية تشغيلية لمساعدتك ومساعدة محاسبك، وليست قوائم مالية معتمدة ولا إقرارات ضريبية رسمية، ولا تغني عن مراجعة محاسب مرخّص.</li>
         <li>الاشتراك والفوترة والإلغاء تتم عبر متجر تطبيقات سلة ووفق سياساته.</li>
         <li>يحق لنا تحديث الميزات والأسعار مع إشعار المشتركين مسبقاً.</li>
         <li>للاستفسارات والدعم: بريد الدعم أدناه.</li>
@@ -375,6 +427,14 @@ document.getElementById('copy').addEventListener('click', function(){
   function done(){btn.textContent='تم النسخ';setTimeout(function(){btn.textContent='نسخ'},1800)}
   function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
   try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+});
+document.querySelectorAll('.billing button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var y=b.getAttribute('data-cycle')==='yearly';
+    document.querySelectorAll('.billing button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+    document.querySelectorAll('#pricing [data-m]').forEach(function(el){el.textContent=el.getAttribute(y?'data-y':'data-m')});
+    document.querySelectorAll('#pricing [data-show="yearly"]').forEach(function(el){el.hidden=!y});
+  });
 });
 </script>
 
